@@ -1,0 +1,23 @@
+
+# Apache Server Configurations
+
+# Disable directory browsing
+Options -Indexes
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Rewrite rules for pretty URLs (example)
+# RewriteRule ^users/([0-9]+)$ users.php?id=$1 [NC,L]
+
+# Deny access to sensitive files
+<FilesMatch "\.(sql|log|ini)$"]
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Deny access to include files
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
