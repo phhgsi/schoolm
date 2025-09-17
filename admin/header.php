@@ -48,6 +48,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Admin') {
                 <li class="mb-2"><a href="fees.php" class="block p-2 rounded hover:bg-gray-700"><i class="fas fa-money-bill-wave mr-2"></i>Fees</a></li>
                 <li class="mb-2"><a href="events.php" class="block p-2 rounded hover:bg-gray-700"><i class="fas fa-calendar-alt mr-2"></i>Events</a></li>
                 <li class="mb-2"><a href="gallery.php" class="block p-2 rounded hover:bg-gray-700"><i class="fas fa-images mr-2"></i>Gallery</a></li>
+                <li class="mb-2"><a href="news.php" class="block p-2 rounded hover:bg-gray-700"><i class="fas fa-newspaper mr-2"></i>News</a></li>
+                <li class="mb-2"><a href="notices.php" class="block p-2 rounded hover:bg-gray-700"><i class="fas fa-bullhorn mr-2"></i>Notices</a></li>
                 <li class="mb-2"><a href="reports.php" class="block p-2 rounded hover:bg-gray-700"><i class="fas fa-chart-bar mr-2"></i>Reports</a></li>
                 <li class="mb-2"><a href="settings.php" class="block p-2 rounded hover:bg-gray-700"><i class="fas fa-cogs mr-2"></i>Settings</a></li>
             </ul>

@@ -475,6 +475,32 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `role_id`, `is_deleted`, `created_at`, `updated_at`) VALUES
 (1, 'admin', '$2y$10$E.q.1Y/aJ8.K6C.V.u.g.e6Z5ZzW/zY5a.C.ZzW/zY5a.C.ZzW/z', 1, 0, '2025-09-16 10:00:00', '2025-09-16 10:00:00');
 
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `date` date NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notices`
+--
+
+CREATE TABLE `notices` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `date` date NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -590,6 +616,18 @@ ALTER TABLE `marks`
   ADD KEY `subject_id` (`subject_id`),
   ADD KEY `exam_id` (`exam_id`),
   ADD KEY `academic_year_id` (`academic_year_id`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notices`
+--
+ALTER TABLE `notices`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `parents`

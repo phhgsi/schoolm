@@ -58,6 +58,20 @@ $(document).ready(function() {
                 testimonialsContainer.append('<div class="bg-white p-8 rounded-lg shadow-md"><p>"' + testimonial.quote + '"</p><p class="mt-4 font-bold">- ' + testimonial.author + '</p></div>');
             });
 
+            // Notice Board Section
+            var noticeBoardContainer = $('#notice-board-section .grid');
+            noticeBoardContainer.empty();
+            $.each(data.notices, function(index, notice) {
+                noticeBoardContainer.append('<div class="bg-white p-8 rounded-lg shadow-md"><h3 class="text-xl font-bold mb-4">' + notice.title + '</h3><p>' + notice.content + '</p><p class="mt-4 text-gray-500">' + notice.date + '</p></div>');
+            });
+
+            // News Section
+            var newsContainer = $('#news-section .grid');
+            newsContainer.empty();
+            $.each(data.news, function(index, news_item) {
+                newsContainer.append('<div class="bg-white p-8 rounded-lg shadow-md"><h3 class="text-xl font-bold mb-4">' + news_item.title + '</h3><p>' + news_item.content + '</p><p class="mt-4 text-gray-500">' + news_item.date + '</p></div>');
+            });
+
             // Footer
             $('#footer-about p').text(data.about_section.content);
             $('#footer-contact .address').text(data.contact_info.address);

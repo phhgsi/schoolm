@@ -47,6 +47,14 @@ try {
         ['quote' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.', 'author' => 'Student Name']
     ];
 
+    // Notices
+    $stmt = $pdo->query("SELECT * FROM notices WHERE is_deleted = 0 ORDER BY date DESC LIMIT 5");
+    $notices = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // News
+    $stmt = $pdo->query("SELECT * FROM news WHERE is_deleted = 0 ORDER BY date DESC LIMIT 3");
+    $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     $response = [
         'school_name' => isset($settings['school_name']) ? $settings['school_name'] : 'School Name',
         'carousel_images' => $carousel_images,
@@ -56,6 +64,8 @@ try {
         'achievements' => $achievements,
         'gallery_images' => $gallery_images,
         'testimonials' => $testimonials,
+        'notices' => $notices,
+        'news' => $news,
         'contact_info' => [
             'address' => isset($settings['school_address']) ? $settings['school_address'] : '123 School Street, City, State, 12345',
             'email' => isset($settings['school_email']) ? $settings['school_email'] : 'info@school.com',
