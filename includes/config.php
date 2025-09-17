@@ -4,6 +4,8 @@ $dbname = 'school_management_system';
 $username = 'root';
 $password = '';
 
+define('BASE_URL', '/school/');
+
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -1,4 +1,5 @@
 
+<?php include_once 'includes/config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +16,12 @@
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold school-name">School Name</h1>
             <nav>
-                <a href="#" class="px-4">Home</a>
+                <a href="<?php echo BASE_URL; ?>" class="px-4">Home</a>
                 <a href="#courses-section" class="px-4">Courses</a>
                 <a href="#events-section" class="px-4">Events</a>
                 <a href="#gallery-section" class="px-4">Gallery</a>
-                <a href="#footer-contact" class="px-4">Contact</a>
-                <a href="login.php" class="px-4">Login</a>
+                <a href="#footer-contact" class_="px-4">Contact</a>
+                <a href="<?php echo BASE_URL; ?>login.php" class="px-4">Login</a>
             </nav>
         </div>
     </header>
