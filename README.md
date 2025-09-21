@@ -93,6 +93,223 @@ graph TD
     AM --> AO[Fee Payments]
     AM --> AP[Communication with Teachers]
 ```
+1. User Authentication and Role-Based Access Flow
+
+```mermaid
+flowchart TD
+    A[User Visits Login Page] --> B[Enter Credentials<br>Username/Email & Password]
+    B --> C{Validate Credentials}
+    C -->|Invalid| D[Show Error Message]
+    C -->|Valid| E[Check User Role]
+    
+    E --> F{Admin User}
+    F -->|Yes| G[Redirect to Admin Dashboard]
+    
+    E --> H{Teacher User}
+    H -->|Yes| I[Redirect to Teacher Dashboard]
+    
+    E --> J{Cashier User}
+    J -->|Yes| K[Redirect to Cashier Dashboard]
+    
+    E --> L{Student User}
+    L -->|Yes| M[Redirect to Student Dashboard]
+    
+    E --> N{Parent User}
+    N -->|Yes| O[Redirect to Parent Dashboard]
+    
+    G --> P[Load Dashboard with<br>Admin Permissions]
+    I --> Q[Load Dashboard with<br>Teacher Permissions]
+    K --> R[Load Dashboard with<br>Cashier Permissions]
+    M --> S[Load Dashboard with<br>Student Permissions]
+    O --> T[Load Dashboard with<br>Parent Permissions]
+    
+    P --> U[Render Admin-Specific<br>Modules & Features]
+    Q --> V[Render Teacher-Specific<br>Modules & Features]
+    R --> W[Render Cashier-Specific<br>Modules & Features]
+    S --> X[Render Student-Specific<br>Modules & Features]
+    T --> Y[Render Parent-Specific<br>Modules & Features]
+```
+
+2. Academic Year Management and Archiving Process
+
+```mermaid
+flowchart TD
+    A[Academic Year Management] --> B{Action Selection}
+    
+    B --> C[Create New Academic Year]
+    B --> D[Edit Existing Academic Year]
+    B --> E[Set Current Academic Year]
+    B --> F[Archive Academic Year]
+    
+    C --> G[Validate Year Dates<br>Ensure No Overlap]
+    G --> H[Save New Academic Year<br>to Database]
+    H --> I[Update System Settings<br>If Set as Current]
+    
+    D --> J[Load Year Data<br>into Edit Form]
+    J --> K[Validate Changes<br>Ensure Data Integrity]
+    K --> L[Update Academic Year<br>in Database]
+    
+    E --> M[Check if Another Year<br>is Currently Active]
+    M --> N[Set Previous Year<br>as Non-Current]
+    N --> O[Set Selected Year<br>as Current]
+    
+    F --> P[Confirm Archiving Action]
+    P --> Q{Archive with Data Preservation?}
+    Q -->|Yes| R[Move Data to Archive Tables]
+    R --> S[Update Academic Year Status<br>to Archived]
+    Q -->|No| T[Permanently Delete Data]
+    T --> U[Remove Academic Year Record]
+    
+    S --> V[Generate Archive Report]
+    U --> W[Generate Deletion Report]
+    
+    V --> X[Display Success Message]
+    W --> X
+```
+
+3. Library Management Process
+
+```mermaid
+flowchart TD
+    A[Library Management] --> B{Action Selection}
+    
+    B --> C[Add New Book]
+    B --> D[Search for Book]
+    B --> E[Issue Book]
+    B --> F[Return Book]
+    B --> G[Generate Reports]
+    
+    C --> H[Enter Book Details<br>ISBN, Title, Author, etc.]
+    H --> I[Validate Data<br>Check for Duplicate ISBN]
+    I --> J[Save Book to Database<br>Update Inventory Count]
+    
+    D --> K[Enter Search Criteria<br>Title, Author, Category, etc.]
+    K --> L[Query Database<br>with Search Parameters]
+    L --> M[Display Search Results<br>with Availability Status]
+    
+    E --> N[Select Book from Inventory]
+    N --> O[Select User<br>Student/Teacher/Staff]
+    O --> P[Validate User Eligibility<br>Check Existing Issues]
+    P --> Q[Record Issue Transaction<br>Set Due Date]
+    Q --> R[Update Book Status<br>Decrease Available Count]
+    
+    F --> S[Select Book to Return]
+    S --> T[Check for Overdue<br>Calculate Fine if Applicable]
+    T --> U[Process Fine Payment<br>if Required]
+    U --> V[Update Return Date<br>in Database]
+    V --> W[Update Book Status<br>Increase Available Count]
+    
+    G --> X[Select Report Type<br>Inventory, Issues, Overdue, etc.]
+    X --> Y[Set Date Range<br>and Filters]
+    Y --> Z[Generate Report<br>in Selected Format PDF/Excel]
+```
+
+4. Exam Management and Admit Card Generation Process
+
+```mermaid
+flowchart TD
+    A[Exam Management] --> B{Action Selection}
+    
+    B --> C[Create New Exam]
+    B --> D[Schedule Subjects]
+    B --> E[Generate Admit Cards]
+    B --> F[Enter Exam Results]
+    
+    C --> G[Enter Exam Details<br>Name, Type, Dates, Classes]
+    G --> H[Validate Dates<br>Check for Conflicts]
+    H --> I[Save Exam to Database]
+    
+    D --> J[Select Exam and Class]
+    J --> K[Add Subjects with<br>Date, Time, Duration]
+    K --> L[Validate Schedule<br>Check for Overlaps]
+    L --> M[Save Subject Schedule<br>to Database]
+    
+    E --> N[Select Exam and Class<br>or Individual Students]
+    N --> O[Fetch Student Data<br>and Photo]
+    O --> P[Fetch Subject Schedule<br>for Selected Exam]
+    P --> Q[Generate Admit Card Layout<br>with School Logo and Details]
+    Q --> R[Format for Printing<br>Multiple per Page]
+    R --> S[Generate PDF<br>or Direct Print]
+    
+    F --> T[Select Exam and Class]
+    T --> U[Select Subject]
+    U --> V[Enter Marks for Students]
+    V --> W[Validate Marks<br>Against Maximum]
+    W --> X[Calculate Percentages<br>and Grades]
+    X --> Y[Save Results to Database]
+    Y --> Z[Publish Results<br>to Student Portal]
+```
+
+5. Multi-language Support Implementation Process
+
+```mermaid
+flowchart TD
+    A[Multi-language Support] --> B{Process Type}
+    
+    B --> C[Language Detection]
+    B --> D[Content Translation]
+    B --> E[Language Switching]
+    
+    C --> F[Check User Preference<br>in Session or Profile]
+    F --> G{Preference Found?}
+    G -->|Yes| H[Use Preferred Language]
+    G -->|No| I[Check Browser Language Settings]
+    I --> J[Match with Available Languages]
+    J --> K{Match Found?}
+    K -->|Yes| L[Use Matched Language]
+    K -->|No| M[Use Default Language English]
+    
+    D --> N[Load Requested Page Content]
+    N --> O[Identify Translatable Elements<br>Text, Labels, Messages]
+    O --> P[Query Translation Database<br>for Current Language]
+    P --> Q{Translation Available?}
+    Q -->|Yes| R[Replace Content with Translation]
+    Q -->|No| S[Use Default Language Content]
+    R --> T[Render Page with Translations]
+    S --> T
+    
+    E --> U[User Selects New Language]
+    U --> V[Update User Preference<br>in Session and Database]
+    V --> W[Reload Page Content<br>with New Language]
+```
+
+6. Data Flow Between Modules
+
+```mermaid
+flowchart LR
+    A[User Interface<br>Frontend] <--> B[API Layer<br>RESTful Endpoints]
+    B <--> C[Business Logic<br>PHP Controllers]
+    C <--> D[Data Access Layer<br>Models]
+    D <--> E[(Database<br>MySQL)]
+    
+    F[External Systems<br>Payment Gateways] <--> B
+    G[Mobile Applications] <--> B
+    H[Third-party Integrations<br>LMS, SIS] <--> B
+    
+    subgraph Security Layer
+        I[Authentication]
+        J[Authorization]
+        K[Input Validation]
+        L[Rate Limiting]
+    end
+    
+    B <--> I
+    B <--> J
+    B <--> K
+    B <--> L
+    
+    subgraph "Supporting Services"
+        M[File Storage<br>Student Photos, Documents]
+        N[Email Service<br>Notifications]
+        O[Push Notification Service<br>Mobile Alerts]
+        P[Reporting Service<br>PDF/Excel Generation]
+    end
+    
+    C <--> M
+    C <--> N
+    C <--> O
+    C <--> P
+```
 Database Design
 
 Key Tables
